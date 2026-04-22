@@ -1,58 +1,59 @@
+// tableau a ne PAS supprimer !important
 const AllCardVisual = [
-	"cards/black/blackChangeColor.png",
-	"cards/black/BlackPlusQuatre.png",
-	"cards/yellow/yellowPlusDeux.png",
-	"cards/yellow/yellownum9.png",
-	"cards/yellow/yellownum8.png",
-	"cards/yellow/yellownum7.png",
-	"cards/yellow/yellownum6.png",
-	"cards/yellow/yellownum5.png",
-	"cards/yellow/yellownum4.png",
-	"cards/yellow/yellownum3.png",
-	"cards/yellow/yellownum2.png",
-	"cards/yellow/yellownum1.png",
-	"cards/yellow/yellownum0.png",
-	"cards/yellow/yellowChangerSense.png",
-	"cards/yellow/yellowBlocage.png",
-	"cards/red/redPlusDeux.png",
-	"cards/red/rednum9.png",
-	"cards/red/rednum8.png",
-	"cards/red/rednum7.png",
-	"cards/red/rednum6.png",
-	"cards/red/rednum5.png",
-	"cards/red/rednum4.png",
-	"cards/red/rednum3.png",
-	"cards/red/rednum2.png",
-	"cards/red/rednum1.png",
-	"cards/red/rednum0.png",
-	"cards/red/redChangerSense.png",
-	"cards/red/redBlocage.png",
-	"cards/green/greenPlusDeux.png",
-	"cards/green/greennum9.png",
-	"cards/green/greennum8.png",
-	"cards/green/greennum7.png",
-	"cards/green/greennum6.png",
-	"cards/green/greennum5.png",
-	"cards/green/greennum4.png",
-	"cards/green/greennum3.png",
-	"cards/green/greennum2.png",
-	"cards/green/greennum1.png",
-	"cards/green/greennum0.png",
-	"cards/green/greenChangerSense.png",
-	"cards/green/greenBlocage.png",
-	"cards/blue/bluePlusDeux.png",
-	"cards/blue/bluenum9.png",
-	"cards/blue/bluenum8.png",
-	"cards/blue/bluenum7.png",
-	"cards/blue/bluenum6.png",
-	"cards/blue/bluenum5.png",
-	"cards/blue/bluenum4.png",
-	"cards/blue/bluenum3.png",
-	"cards/blue/bluenum2.png",
-	"cards/blue/bluenum1.png",
-	"cards/blue/bluenum0.png",
-	"cards/blue/blueChangerSense.png",
-	"cards/blue/blueBlocage.png",
+	"cards/black/blackaddfour.png",
+	"cards/black/blackchangeColor.png",
+	"cards/blue/blue0.png",
+	"cards/blue/blue1.png",
+	"cards/blue/blue2.png",
+	"cards/blue/blue3.png",
+	"cards/blue/blue4.png",
+	"cards/blue/blue5.png",
+	"cards/blue/blue6.png",
+	"cards/blue/blue7.png",
+	"cards/blue/blue8.png",
+	"cards/blue/blue9.png",
+	"cards/blue/blueAddtwo.png",
+	"cards/blue/blueCgeSns.png",
+	"cards/blue/bluePastrn.png",
+	"cards/green/green0.png",
+	"cards/green/green1.png",
+	"cards/green/green2.png",
+	"cards/green/green3.png",
+	"cards/green/green4.png",
+	"cards/green/green5.png",
+	"cards/green/green6.png",
+	"cards/green/green7.png",
+	"cards/green/green8.png",
+	"cards/green/green9.png",
+	"cards/green/greenAddtwo.png",
+	"cards/green/greenCgeSns.png",
+	"cards/green/greenPastrn.png",
+	"cards/red/red0.png",
+	"cards/red/red1.png",
+	"cards/red/red2.png",
+	"cards/red/red3.png",
+	"cards/red/red4.png",
+	"cards/red/red5.png",
+	"cards/red/red6.png",
+	"cards/red/red7.png",
+	"cards/red/red8.png",
+	"cards/red/red9.png",
+	"cards/red/redAddtwo.png",
+	"cards/red/redCgeSns.png",
+	"cards/red/redPastrn.png",
+	"cards/yellow/yellow0.png",
+	"cards/yellow/yellow1.png",
+	"cards/yellow/yellow2.png",
+	"cards/yellow/yellow3.png",
+	"cards/yellow/yellow4.png",
+	"cards/yellow/yellow5.png",
+	"cards/yellow/yellow6.png",
+	"cards/yellow/yellow7.png",
+	"cards/yellow/yellow8.png",
+	"cards/yellow/yellow9.png",
+	"cards/yellow/yellowAddtwo.png",
+	"cards/yellow/yellowCgeSns.png",
+	"cards/yellow/yellowPastrn.png",
 ];
 const Allcard = {
 	red: {
@@ -117,108 +118,149 @@ const Allcard = {
 	},
 	black: ["blackaddfour", "blackchangeColor"],
 };
-
-function setGame(NumberOfPlayer = Number) {
-	if (NumberOfPlayer < 2) {
+// function zone
+//		initialise les deck de tout les joueurs
+function setGameOrAdd(NumberOfPlayer = Number, howManyCard = Number, isadd) {
+	if (NumberOfPlayer < 2 && isadd == null) {
 		console.log("pas assez de joueur");
 		return "error";
 	}
+
 	let newSetForAllPlayer = [];
 	let cardsOfOnePlayer = [];
+
+
+
 	for (let i = 0; i < NumberOfPlayer; i++) {
 		cardsOfOnePlayer = [];
-		for (let y = 0; y < 7; y++) {
+
+		for (let y = 0; y < howManyCard; y++) {
 			let random = Math.floor(Math.random() * 14);
 			if (random <= 3) {
+
 				// red
 				random = Math.floor(Math.random() * 5);
 				if (random <= 3) {
 					//  num
-					cardsOfOnePlayer.push(selectCard("red", "num"));
+					isadd != null ? isadd.push(createObject(selectCard("red", "num"))) : cardsOfOnePlayer.push(createObject(selectCard("red", "num")));
 				} else {
 					//  spe
-					cardsOfOnePlayer.push(selectCard("red", "spe"));
+					isadd != null ? isadd.push(createObject(selectCard("red", "spe"))) : cardsOfOnePlayer.push(createObject(selectCard("red", "spe")));
 				}
+
 			} else if (random >= 4 && random <= 6) {
 				//  blue
 				random = Math.floor(Math.random() * 5);
 				if (random <= 3) {
 					//  num
-					cardsOfOnePlayer.push(selectCard("blue", "num"));
+					isadd != null ? isadd.push(createObject(selectCard("blue", "num"))) : cardsOfOnePlayer.push(createObject(selectCard("blue", "num")));
 				} else {
 					//  spe
-					cardsOfOnePlayer.push(selectCard("blue", "spe"));
+					isadd != null ? isadd.push(createObject(selectCard("blue", "spe"))) : cardsOfOnePlayer.push(createObject(selectCard("blue", "spe")));
 				}
+
 			} else if (random >= 7 && random <= 9) {
 				//  yellow
 				random = Math.floor(Math.random() * 5);
 				if (random <= 3) {
 					//  num
-					cardsOfOnePlayer.push(selectCard("yellow", "num"));
+					isadd != null ? isadd.push(createObject(selectCard("yellow", "num"))) : cardsOfOnePlayer.push(createObject(selectCard("yellow", "num")));
 				} else {
 					//  spe
-					cardsOfOnePlayer.push(selectCard("yellow", "spe"));
+					isadd != null ? isadd.push(createObject(selectCard("yellow", "spe"))) : cardsOfOnePlayer.push(createObject(selectCard("yellow", "spe")));
 				}
+
 			} else if (random >= 10 && random <= 12) {
 				//  green
 				random = Math.floor(Math.random() * 5);
 				if (random <= 3) {
 					//  num
-					cardsOfOnePlayer.push(selectCard("green", "num"));
+					isadd != null ? isadd.push(createObject(selectCard("green", "num"))) : cardsOfOnePlayer.push(createObject(selectCard("green", "num")));
 				} else {
 					//  spe
-					cardsOfOnePlayer.push(selectCard("green", "spe"));
+					isadd != null ? isadd.push(createObject(selectCard("green", "spe"))) : cardsOfOnePlayer.push(createObject(selectCard("green", "spe")));
 				}
+
 			} else {
 				random = Math.floor(Math.random() * 2);
-				cardsOfOnePlayer.push(Allcard.black[random]);
+				isadd != null ? isadd.push(createObject(Allcard.black[random])) : cardsOfOnePlayer.push(createObject(Allcard.black[random]));
 			}
 		}
 		newSetForAllPlayer.push(cardsOfOnePlayer);
+		if (isadd != null) {
+			return isadd
+		}
 	}
 	return newSetForAllPlayer;
-}
-
+};
+//		selectionne une carte aléatoire
 function selectCard(colors = String, type = String) {
 	let select = Math.floor(Math.random() * Allcard[colors][type].length);
 	return Allcard[colors][type][select];
-}
-
-/*    id attendue => "red0" "blue6" "blackaddfour" ....   */
-function createObject(id = "") {
-	let newobject = {};
-	if (id.includes("red")) {
-		// for red
-		for (let i = 0; i < AllCardVisual.length; i++) {
-			if (AllCardVisual[i].includes("red")) {}
+};
+// 		pour plus facilement appeler la fonction
+function addorset(howmany, whatis, addcard, player) {
+	if (whatis) {
+		return setGameOrAdd(howmany, 7, null);
+	}
+	return setGameOrAdd(1, addcard, player);
+};
+//		supprime une carte
+function deleteAcard(id = String, player = []) {
+	for (let i = 0; i < player.length; i++) {
+		if (player[i].id == id) {
+			player.splice(i, 1);
+			break;
 		}
-	} else if (id.includes("blue")) {
-		// for blue
-	} else if (id.includes("regreend")) {
-		// for green
-	} else if (id.includes("yellow")) {
-		// for yellow
-	} else {
-		// for black
+	}
+	return player;
+};
+// Résultat attendu : 1
+//    id attendue => "red0" "blue6" "blackaddfour" ....
+function createObject(id = "") {
+	let newobject = {
+		id: id,
+		visual: "",
+		spe: Boolean,
+	};
+	for (let i = 0; i < AllCardVisual.length; i++) {
+		if (AllCardVisual[i].includes(id)) {
+			if (AllCardVisual[i].includes("Addtwo") || AllCardVisual[i].includes("CgeSns") || AllCardVisual[i].includes("Pastrn") || AllCardVisual[i].includes("black")) {
+				if (AllCardVisual[i].includes("red")) { newobject = { id: id, visual: AllCardVisual[i], spe: true, color: "red" } } else if (AllCardVisual[i].includes("blue")) { newobject = { id: id, visual: AllCardVisual[i], spe: true, color: "blue" } } else if (AllCardVisual[i].includes("green")) { newobject = { id: id, visual: AllCardVisual[i], spe: true, color: "green" } } else if (AllCardVisual[i].includes("yellow")) { newobject = { id: id, visual: AllCardVisual[i], spe: true, color: "yellow" } } else if (AllCardVisual[i].includes("black")) { newobject = { id: id, visual: AllCardVisual[i], spe: true, color: "black" } }
+
+				break;
+			}
+			if (AllCardVisual[i].includes("red")) { newobject = { id: id, visual: AllCardVisual[i], spe: false, color: "red" } } else if (AllCardVisual[i].includes("blue")) { newobject = { id: id, visual: AllCardVisual[i], spe: false, color: "blue" } } else if (AllCardVisual[i].includes("green")) { newobject = { id: id, visual: AllCardVisual[i], spe: false, color: "green" } } else if (AllCardVisual[i].includes("yellow")) { newobject = { id: id, visual: AllCardVisual[i], spe: false, color: "yellow" } } else if (AllCardVisual[i].includes("black")) { newobject = { id: id, visual: AllCardVisual[i], spe: false, color: "black" } }
+
+			break;
+		}
 	}
 	return newobject;
-	/*
-        EXEMPLE D'OBJECT QUE RENVOIE CETTE FONCTION
-        {
-            id: "red0",
-            img: "cards/red/rednum0.png",
-            spe: false,
-        }
-        {
-            id: "blueCgeSns",
-            img: "cards/blue/blueChangerSense.png",
-            spe: true,
-        }
-    */
+	
+};
+/*
+EXEMPLE D'OBJECT QUE RENVOIE CETTE FONCTION
+{
+	id: "blueCgeSns",
+	img: "cards/blue/blueChangerSense.png",
+	spe: true,
+	color: "blue",
 }
+*/
+
+//		queryselector
+
+//		addeventlistenner
 
 // test and debug zone
 
 document.addEventListener("DOMContentLoaded", () => {
 	console.log("Hello World");
 });
+/*
+	let AllPlayer = addorset(4, true);
+
+	addorset(0, false, 16, AllPlayer[3])
+	
+	deleteAcard("blue0", AllPlayer[3])
+*/

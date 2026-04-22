@@ -1,0 +1,151 @@
+/*   font   font-family: "Pixelify Sans", sans-serif;   font-family: "Noto Serif", serif;   */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Pixelify+Sans:wght@400..700&display=swap');
+
+/*   couleur et padding ext   */
+:root {
+    --base-text-color: #29078d;
+    --base-border-radius: 16px;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: "Noto Serif", serif;
+    color: var(--base-text-color);
+}
+
+h1 {
+    font-family: "Pixelify Sans", sans-serif;
+    font-size: 40px;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: stretch;
+    gap: 40px;
+    padding-bottom: 64px;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-between;
+    padding: 20px 32px;
+    background-color: #dba124;
+    box-shadow: 0px 0px 30px 10px #c89321;
+}
+
+form {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    gap: 12px;
+}
+
+label {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: 900;
+}
+
+button {
+    padding: 12px 18px;
+    border-radius: var(--base-border-radius);
+    background: none;
+    font-size: 14px;
+    font-weight: 900;
+    border: 2px solid rgb(172, 66, 0);
+}
+
+button:hover {
+    background-color: black;
+    color: white;
+    border-color: white;
+    cursor: pointer;
+}
+
+button:active {
+    border-color: black;
+    color: black;
+    background-color: white;
+    cursor: default;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: stretch;
+    text-align: center;
+min-height: 86.3vh;
+}
+
+#GameVue {
+    display: grid;
+    grid-template-areas:
+        "tous tous tous"
+        "pioche joueurUn joueurUn";
+    gap: 20px;
+}
+
+#otherPlayer {
+    grid-area: tous;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    background-color: rgb(255, 0, 0);
+}
+
+.player {
+    background-color: wheat;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    gap: 8px;
+}
+
+.card {
+    object-fit: center / cover;
+}
+
+#piocheEtDefause {
+    grid-area: pioche;
+    background-color: rgb(0, 255, 0);
+}
+
+.pioche {
+    border: none;
+    border-radius: var(--base-border-radius);
+    background: none;
+    padding: 0;
+    transition: 1.2s;
+    overflow: hidden;
+    width: 50%;
+}
+
+.pioche:hover {
+    background-color: null;
+    color: null;
+    border-color: null;
+    cursor: pointer;
+    rotate: -6deg;
+}
+
+.pioche:active {
+    border-color: null;
+    color: null;
+    background-color: null;
+    cursor: default;
+}
+
+#tourDuJoueur {
+    grid-area: joueurUn;
+    background-color: rgb(0, 0, 255);
+}

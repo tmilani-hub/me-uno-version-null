@@ -7,6 +7,39 @@
 </head>
 
 <body>
+    <header>
+        <button type="button">info</button>
+        <form>
+            <label for="nombreJoueur">Nombre de joueurs
+                <input min="2" required id="nombreJoueur" type="number">
+            </label>
+            <button type="submit">Commencer la partie</button>
+        </form>
+    </header>
+    <main>
+        <h1>UNO</h1>
+        <section id="GameVue">
+            <section id="otherPlayer">
+                <div class="player">
+                    <h2><span>"1"</span> a <span>10</span> carte</h2>
+                </div>
+                <div class="player">
+                    <h2><span>"2"</span> a <span>10</span> carte</h2>
+                </div>
+                <div class="player">
+                    <h2><span>"3"</span> a <span>10</span> carte</h2>
+                </div>
+                <div class="player">
+                    <h2><span>"4"</span> a <span>10</span> carte</h2>
+                </div>
+            </section>
+            <section id="piocheEtDefause">
+                <button class="pioche"><img src="./cards/dosUno.png" alt=""></button>
+            </section>
+            <section id="tourDuJoueur">
+                <p>test</p>
+            </section>
+        </section>
     <script src="uno.js"></script>
 </body>
 
