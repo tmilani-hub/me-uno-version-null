@@ -12,6 +12,7 @@
     margin: 0;
     font-family: "Roboto", sans-serif;
     color: var(--base-text-color);
+    text-decoration: none;
 }
 
 h1 {
@@ -39,6 +40,14 @@ header {
     box-shadow: 0px 0px 30px 10px #c89321;
 }
 
+.infoGame {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
 form {
     display: flex;
     align-items: stretch;
@@ -55,7 +64,7 @@ label {
     font-weight: 900;
 }
 
-button {
+.normalbtn {
     padding: 12px 18px;
     border-radius: var(--base-border-radius);
     background: none;
@@ -64,14 +73,14 @@ button {
     border: 2px solid rgb(172, 66, 0);
 }
 
-button:hover {
+.normalbtn:hover {
     background-color: black;
     color: white;
     border-color: white;
     cursor: pointer;
 }
 
-button:active {
+.normalbtn:active {
     border-color: black;
     color: black;
     background-color: white;
@@ -112,7 +121,7 @@ main {
     display: grid;
     grid-template-columns: 1fr 1fr;
     justify-content: stretch;
-    align-items: stretch;
+    align-items: start;
     padding: 24px;
     gap: 32px;
 }
@@ -125,6 +134,7 @@ main {
     transition: 0.6s;
     overflow: hidden;
     padding: 16px;
+    height: 139px;
 }
 
 .pioche:hover {
@@ -143,10 +153,8 @@ main {
 }
 
 #tourDuJoueur {
-    display: flex;
-    flex-direction: row;
-    align-items: stretch;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
     gap: 12px;
     padding: 24px 32px;
 }
@@ -178,6 +186,7 @@ main {
     background-color: rgb(44, 44, 44);
     gap: 10px;
 }
+
 /*
     rgb(44, 44, 44)     black
     rgb(216, 52, 18)    red
@@ -216,4 +225,29 @@ main {
     justify-content: center;
     height: 100%;
     background: #b92f2f;
+}
+
+.boom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column  ;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: black;
+    border: none;
+    color: rgb(255, 255, 255);
+    font-size: 64px;
+    text-align: center;
+}
+
+.boom span {
+     color: rgb(255, 255, 255);
+}
+
+.boom:hover {
+    cursor: pointer;
 }
