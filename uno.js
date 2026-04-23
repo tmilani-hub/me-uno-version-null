@@ -1,60 +1,10 @@
 // tableau a ne PAS supprimer !important
-const AllCardVisual = [
-	"cards/black/blackaddfour.png",
-	"cards/black/blackchangeColor.png",
-	"cards/blue/blue0.png",
-	"cards/blue/blue1.png",
-	"cards/blue/blue2.png",
-	"cards/blue/blue3.png",
-	"cards/blue/blue4.png",
-	"cards/blue/blue5.png",
-	"cards/blue/blue6.png",
-	"cards/blue/blue7.png",
-	"cards/blue/blue8.png",
-	"cards/blue/blue9.png",
-	"cards/blue/blueAddtwo.png",
-	"cards/blue/blueCgeSns.png",
-	"cards/blue/bluePastrn.png",
-	"cards/green/green0.png",
-	"cards/green/green1.png",
-	"cards/green/green2.png",
-	"cards/green/green3.png",
-	"cards/green/green4.png",
-	"cards/green/green5.png",
-	"cards/green/green6.png",
-	"cards/green/green7.png",
-	"cards/green/green8.png",
-	"cards/green/green9.png",
-	"cards/green/greenAddtwo.png",
-	"cards/green/greenCgeSns.png",
-	"cards/green/greenPastrn.png",
-	"cards/red/red0.png",
-	"cards/red/red1.png",
-	"cards/red/red2.png",
-	"cards/red/red3.png",
-	"cards/red/red4.png",
-	"cards/red/red5.png",
-	"cards/red/red6.png",
-	"cards/red/red7.png",
-	"cards/red/red8.png",
-	"cards/red/red9.png",
-	"cards/red/redAddtwo.png",
-	"cards/red/redCgeSns.png",
-	"cards/red/redPastrn.png",
-	"cards/yellow/yellow0.png",
-	"cards/yellow/yellow1.png",
-	"cards/yellow/yellow2.png",
-	"cards/yellow/yellow3.png",
-	"cards/yellow/yellow4.png",
-	"cards/yellow/yellow5.png",
-	"cards/yellow/yellow6.png",
-	"cards/yellow/yellow7.png",
-	"cards/yellow/yellow8.png",
-	"cards/yellow/yellow9.png",
-	"cards/yellow/yellowAddtwo.png",
-	"cards/yellow/yellowCgeSns.png",
-	"cards/yellow/yellowPastrn.png",
-];
+const AllcardNameAndColor = [
+	{
+		color: ,
+		name: "",
+	}
+]
 const Allcard = {
 	red: {
 		num: [
@@ -223,20 +173,66 @@ function createObject(id = "") {
 		visual: "",
 		spe: Boolean,
 	};
-	for (let i = 0; i < AllCardVisual.length; i++) {
+	for (let i = 0; i < AllcardNameAndColor.length; i++) {
 		if (AllCardVisual[i].includes(id)) {
-			if (AllCardVisual[i].includes("Addtwo") || AllCardVisual[i].includes("CgeSns") || AllCardVisual[i].includes("Pastrn") || AllCardVisual[i].includes("black")) {
-				if (AllCardVisual[i].includes("red")) { newobject = { id: id, visual: AllCardVisual[i], spe: true, color: "red" } } else if (AllCardVisual[i].includes("blue")) { newobject = { id: id, visual: AllCardVisual[i], spe: true, color: "blue" } } else if (AllCardVisual[i].includes("green")) { newobject = { id: id, visual: AllCardVisual[i], spe: true, color: "green" } } else if (AllCardVisual[i].includes("yellow")) { newobject = { id: id, visual: AllCardVisual[i], spe: true, color: "yellow" } } else if (AllCardVisual[i].includes("black")) { newobject = { id: id, visual: AllCardVisual[i], spe: true, color: "black" } }
-
+			if (
+				AllCardVisual[i].includes("Addtwo") ||
+				AllCardVisual[i].includes("CgeSns") ||
+				AllCardVisual[i].includes("Pastrn") ||
+				AllCardVisual[i].includes("black")
+			) {
+				if (AllCardVisual[i].includes("red")) {
+					newobject = {
+						id: id, visual: AllCardVisual[i],
+						spe: true, color: "red"
+					}
+				} else if (AllCardVisual[i].includes("blue")) {
+					newobject = {
+						id: id,
+						visual: AllCardVisual[i],
+						spe: true,
+						color: "blue" 
+					}
+				} else if (AllCardVisual[i].includes("green"))
+					{ newobject = {
+						id: id, visual:
+						AllCardVisual[i],
+						spe: true,
+						color: "green"
+					}
+				} else if (AllCardVisual[i].includes("yellow")) {
+					newobject = {
+						id: id,
+						visual: AllCardVisual[i],
+						spe: true,
+						color: "yellow"
+					}
+				} else if (AllCardVisual[i].includes("black")) {
+					newobject = {
+						id: id,
+						visual: AllCardVisual[i],
+						spe: true,
+						color: "black"
+					}
+				}
 				break;
 			}
-			if (AllCardVisual[i].includes("red")) { newobject = { id: id, visual: AllCardVisual[i], spe: false, color: "red" } } else if (AllCardVisual[i].includes("blue")) { newobject = { id: id, visual: AllCardVisual[i], spe: false, color: "blue" } } else if (AllCardVisual[i].includes("green")) { newobject = { id: id, visual: AllCardVisual[i], spe: false, color: "green" } } else if (AllCardVisual[i].includes("yellow")) { newobject = { id: id, visual: AllCardVisual[i], spe: false, color: "yellow" } } else if (AllCardVisual[i].includes("black")) { newobject = { id: id, visual: AllCardVisual[i], spe: false, color: "black" } }
-
+			if (AllCardVisual[i].includes("red")) {
+				newobject = { id: id, visual: AllCardVisual[i], spe: false, color: "red" }
+			} else if (AllCardVisual[i].includes("blue")) {
+				newobject = { id: id, visual: AllCardVisual[i], spe: false, color: "blue" } 
+			} else if (AllCardVisual[i].includes("green")) {
+				newobject = { id: id, visual: AllCardVisual[i], spe: false, color: "green" } 
+			} else if (AllCardVisual[i].includes("yellow")) {
+				newobject = { id: id, visual: AllCardVisual[i], spe: false, color: "yellow" } 
+			} else if (AllCardVisual[i].includes("black")) {
+				newobject = { id: id, visual: AllCardVisual[i], spe: false, color: "black" }
+			}
 			break;
 		}
 	}
 	return newobject;
-	
+
 };
 /*
 EXEMPLE D'OBJECT QUE RENVOIE CETTE FONCTION

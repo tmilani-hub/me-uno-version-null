@@ -1,5 +1,5 @@
 /*   font   font-family: "Pixelify Sans", sans-serif;   font-family: "Noto Serif", serif;   */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Pixelify+Sans:wght@400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Pixelify+Sans:wght@400..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 /*   couleur et padding ext   */
 :root {
@@ -10,13 +10,14 @@
 * {
     padding: 0;
     margin: 0;
-    font-family: "Noto Serif", serif;
+    font-family: "Roboto", sans-serif;
     color: var(--base-text-color);
 }
 
 h1 {
-    font-family: "Pixelify Sans", sans-serif;
-    font-size: 40px;
+    font-family: "Roboto", sans-serif;
+    font-size: 64px;
+    padding-bottom: 24px;
 }
 
 body {
@@ -26,7 +27,6 @@ body {
     align-items: stretch;
     justify-content: stretch;
     gap: 40px;
-    padding-bottom: 64px;
 }
 
 header {
@@ -84,23 +84,71 @@ main {
     align-items: stretch;
     justify-content: stretch;
     text-align: center;
-min-height: 86.3vh;
 }
 
 #GameVue {
-    display: grid;
-    grid-template-areas:
-        "tous tous tous"
-        "pioche joueurUn joueurUn";
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
     gap: 20px;
 }
 
 #otherPlayer {
-    grid-area: tous;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 12px;
-    background-color: rgb(255, 0, 0);
+    padding: 10px 32px;
+}
+
+#gameActive {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+#piocheEtDefause {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: stretch;
+    align-items: stretch;
+    padding: 24px;
+    gap: 32px;
+}
+
+.pioche {
+    border: none;
+    border-radius: var(--base-border-radius);
+    padding: 0;
+    background: #b92f2f;
+    transition: 0.6s;
+    overflow: hidden;
+    padding: 16px;
+}
+
+.pioche:hover {
+    background-color: #b92f2f;
+    color: none;
+    border-color: none;
+    cursor: pointer;
+    rotate: -10deg;
+}
+
+.pioche:active {
+    border-color: #b92f2f;
+    color: none;
+    background-color: none;
+    cursor: default;
+}
+
+#tourDuJoueur {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: center;
+    gap: 12px;
+    padding: 24px 32px;
 }
 
 .player {
@@ -111,41 +159,61 @@ min-height: 86.3vh;
     gap: 8px;
 }
 
+.cadre {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    align-content: stretch;
+    justify-items: stretch;
+}
+
 .card {
-    object-fit: center / cover;
+    object-fit: cover;
+    padding: 12px;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    padding: 16px;
+    border-radius: 16px;
+    background-color: rgb(44, 44, 44);
+    gap: 10px;
+}
+/*
+    rgb(44, 44, 44)     black
+    rgb(216, 52, 18)    red
+    rgb(0, 121, 207)    blue
+    rgb(36, 215, 27)    green
+    rgb(251, 227, 10)   yellow
+*/
+.card p {
+    text-align: start;
+    font-size: 24px;
 }
 
-#piocheEtDefause {
-    grid-area: pioche;
-    background-color: rgb(0, 255, 0);
+.card .right {
+    text-align: end;
 }
 
-.pioche {
-    border: none;
-    border-radius: var(--base-border-radius);
-    background: none;
-    padding: 0;
-    transition: 1.2s;
-    overflow: hidden;
-    width: 50%;
+.card p,
+.card h3 {
+    font-family: "Pixelify Sans", sans-serif;
+    color: white;
 }
 
-.pioche:hover {
-    background-color: null;
-    color: null;
-    border-color: null;
-    cursor: pointer;
-    rotate: -6deg;
+.card h3 {
+    font-size: 24px;
+    margin: 0px 16px;
 }
 
-.pioche:active {
-    border-color: null;
-    color: null;
-    background-color: null;
-    cursor: default;
+.card-pioche h3 {
+    color: rgb(255, 255, 0);
+    margin: 0px 16px;
 }
 
-#tourDuJoueur {
-    grid-area: joueurUn;
-    background-color: rgb(0, 0, 255);
+.card-pioche {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    background: #b92f2f;
 }
