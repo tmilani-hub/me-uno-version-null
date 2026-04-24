@@ -74,7 +74,7 @@ function setGameOrAdd(NumberOfPlayer = Number, howManyCard = Number, isadd) {
 	let cardsOfOnePlayer = [];
 
 	for (let i = 0; i < NumberOfPlayer; i++) {
-		cardsOfOnePlayer = [];
+		cardsOfOnePlayer = { cardOF: [], name: "" };
 
 		for (let y = 0; y < howManyCard; y++) {
 			let random = Math.floor(Math.random() * 14);
@@ -84,10 +84,10 @@ function setGameOrAdd(NumberOfPlayer = Number, howManyCard = Number, isadd) {
 				random = Math.floor(Math.random() * 5);
 				if (random <= 3) {
 					//  num
-					isadd != null ? isadd.push(createObject(selectCard("red", "num"))) : cardsOfOnePlayer.push(createObject(selectCard("red", "num")));
+					isadd != null ? isadd.push(createObject(selectCard("red", "num"))) : cardsOfOnePlayer.cardOF.push(createObject(selectCard("red", "num")));
 				} else {
 					//  spe
-					isadd != null ? isadd.push(createObject(selectCard("red", "spe"))) : cardsOfOnePlayer.push(createObject(selectCard("red", "spe")));
+					isadd != null ? isadd.push(createObject(selectCard("red", "spe"))) : cardsOfOnePlayer.cardOF.push(createObject(selectCard("red", "spe")));
 				}
 
 			} else if (random >= 4 && random <= 6) {
@@ -95,10 +95,10 @@ function setGameOrAdd(NumberOfPlayer = Number, howManyCard = Number, isadd) {
 				random = Math.floor(Math.random() * 5);
 				if (random <= 3) {
 					//  num
-					isadd != null ? isadd.push(createObject(selectCard("blue", "num"))) : cardsOfOnePlayer.push(createObject(selectCard("blue", "num")));
+					isadd != null ? isadd.push(createObject(selectCard("blue", "num"))) : cardsOfOnePlayer.cardOF.push(createObject(selectCard("blue", "num")));
 				} else {
 					//  spe
-					isadd != null ? isadd.push(createObject(selectCard("blue", "spe"))) : cardsOfOnePlayer.push(createObject(selectCard("blue", "spe")));
+					isadd != null ? isadd.push(createObject(selectCard("blue", "spe"))) : cardsOfOnePlayer.cardOF.push(createObject(selectCard("blue", "spe")));
 				}
 
 			} else if (random >= 7 && random <= 9) {
@@ -106,10 +106,10 @@ function setGameOrAdd(NumberOfPlayer = Number, howManyCard = Number, isadd) {
 				random = Math.floor(Math.random() * 5);
 				if (random <= 3) {
 					//  num
-					isadd != null ? isadd.push(createObject(selectCard("yellow", "num"))) : cardsOfOnePlayer.push(createObject(selectCard("yellow", "num")));
+					isadd != null ? isadd.push(createObject(selectCard("yellow", "num"))) : cardsOfOnePlayer.cardOF.push(createObject(selectCard("yellow", "num")));
 				} else {
 					//  spe
-					isadd != null ? isadd.push(createObject(selectCard("yellow", "spe"))) : cardsOfOnePlayer.push(createObject(selectCard("yellow", "spe")));
+					isadd != null ? isadd.push(createObject(selectCard("yellow", "spe"))) : cardsOfOnePlayer.cardOF.push(createObject(selectCard("yellow", "spe")));
 				}
 
 			} else if (random >= 10 && random <= 12) {
@@ -117,15 +117,15 @@ function setGameOrAdd(NumberOfPlayer = Number, howManyCard = Number, isadd) {
 				random = Math.floor(Math.random() * 5);
 				if (random <= 3) {
 					//  num
-					isadd != null ? isadd.push(createObject(selectCard("green", "num"))) : cardsOfOnePlayer.push(createObject(selectCard("green", "num")));
+					isadd != null ? isadd.push(createObject(selectCard("green", "num"))) : cardsOfOnePlayer.cardOF.push(createObject(selectCard("green", "num")));
 				} else {
 					//  spe
-					isadd != null ? isadd.push(createObject(selectCard("green", "spe"))) : cardsOfOnePlayer.push(createObject(selectCard("green", "spe")));
+					isadd != null ? isadd.push(createObject(selectCard("green", "spe"))) : cardsOfOnePlayer.cardOF.push(createObject(selectCard("green", "spe")));
 				}
 
 			} else {
 				random = Math.floor(Math.random() * 2);
-				isadd != null ? isadd.push(createObject(Allcard.black[random])) : cardsOfOnePlayer.push(createObject(Allcard.black[random]));
+				isadd != null ? isadd.push(createObject(Allcard.black[random])) : cardsOfOnePlayer.cardOF.push(createObject(Allcard.black[random]));
 			}
 		}
 		newSetForAllPlayer.push(cardsOfOnePlayer);
@@ -140,7 +140,7 @@ function selectCard(colors = String, type = String) {
 	let select = Math.floor(Math.random() * Allcard[colors][type].length);
 	return Allcard[colors][type][select];
 };
-// 		pour plus facilement appeler la fonction
+// 		pour plus facilement appeler la fonction selectCard
 function addorset(howmany, whatis, addcard, player) {
 	if (whatis) {
 		return setGameOrAdd(howmany, 7, null);
@@ -162,66 +162,125 @@ function deleteAcard(id = String, player = []) {
 function createObject(id = "") {
 	let newobject = {
 		id: id,
-		visual: "",
 		spe: Boolean,
+		color: "",
 	};
 	if (id.includes("red")) {
 		newobject = {
 			id: id,
-			spe: false,
+			spe: id.includes("Pastrn") || id.includes("CgeSns") || id.includes("Addtwo") || id.includes("black") ? true : false,
 			color: "red"
 		}
 	} else if (id.includes("blue")) {
 		newobject = {
 			id: id,
-			spe: false,
+			spe: id.includes("Pastrn") || id.includes("CgeSns") || id.includes("Addtwo") || id.includes("black") ? true : false,
 			color: "blue"
 		}
 	} else if (id.includes("green")) {
 		newobject = {
 			id: id,
-			spe: false,
+			spe: id.includes("Pastrn") || id.includes("CgeSns") || id.includes("Addtwo") || id.includes("black") ? true : false,
 			color: "green"
 		}
 	} else if (id.includes("yellow")) {
 		newobject = {
 			id: id,
-			spe: false,
+			spe: id.includes("Pastrn") || id.includes("CgeSns") || id.includes("Addtwo") || id.includes("black") ? true : false,
 			color: "yellow"
 		}
 	} else if (id.includes("black")) {
 		newobject = {
 			id: id,
-			spe: false,
+			spe: id.includes("Pastrn") || id.includes("CgeSns") || id.includes("Addtwo") || id.includes("black") ? true : false,
 			color: "black"
 		}
 	}
 	return newobject;
+	// 		 {
+	//		 	id: "blueCgeSns",
+	// 		 	img: "cards/blue/blueChangerSense.png",
+	//		 	spe: true,
+	//		 	color: "blue",
+	//		 }
 }
-// 		 {
-//		 	id: "blueCgeSns",
-// 		 	img: "cards/blue/blueChangerSense.png",
-//		 	spe: true,
-//		 	color: "blue",
-//		 }
 
 function boom(text) {
 	const boom = document.createElement("div");
 	const boomPS = document.createElement("span");
 
 	boomPS.textContent = " PS: clic pour fermer";
-	boom.textContent = "Hey c'est au tour de " + text + ".";
+	boom.textContent = "Hey c'est au tour de " + text + "!";
 
 	boom.classList.add("boom");
 
 	boom.appendChild(boomPS);
 	$body.appendChild(boom);
 
-	$boom = document.querySelector(".boom");
+	$boom = document.querySelectorAll(".boom");
 
-	$boom.addEventListener("click", () => {
-		$boom.remove()
+	for (let i = 0; i < $boom.length; i++) {
+		$boom[i].addEventListener("click", () => {
+			$boom[i].remove()
+		});
+	}
+}
+
+function GiveMeAname(test) {
+	const NTP = document.createElement("section");
+	const F_NN = document.createElement("form");
+	const title = document.createElement("h4");
+	const INPtext = document.createElement("input");
+	const yeah = document.createElement("button");
+
+	NTP.id = "nameThePlayer";
+
+	F_NN.classList.add("NeedName");
+	INPtext.classList.add("INPtext");
+	yeah.classList.add("normalbtn");
+
+	INPtext.setAttribute("maxlength", "16");
+	yeah.setAttribute("minlength", "1");
+	INPtext.setAttribute("name", "HeNameMe");
+	INPtext.setAttribute("type", "text");
+	INPtext.setAttribute("placeholder", "J" + test);
+	title.textContent = "Nomme le joueur " + test + ".";
+
+	yeah.textContent = "Suivant";
+
+	NTP.appendChild(F_NN);
+	F_NN.append(title, INPtext, yeah);
+
+	yeah.addEventListener("click", (e) => {
+		e.preventDefault();
+		let data = new FormData(F_NN);
+		let name = data.get("HeNameMe");
+		if (name === "") {
+			console.log("the input is empty");
+			title.textContent = "Nomme le stp";
+		} else {
+			console.log("merci")
+			AllPlayer[test - 1].name = name;
+			NTP.remove();
+			if (test < AllPlayer.length) {
+				GiveMeAname(test + 1);
+			} else {
+				setTheGameVue(AllPlayer);
+			}
+		}
 	});
+
+
+	$body.appendChild(NTP);
+	/*
+	<section id="nameThePlayer">
+		<form class="NeedName">
+			<h4>name the player 1</h4>
+			<input maxlength="16" name="HeNameMe" class="INPtext" placeholder="furie" type="text">
+			<button class="normalbtn" type="submit">suivant</button>
+		</form>
+	</section>
+	*/
 }
 
 function setTheGameVue(player) {
@@ -235,36 +294,54 @@ function setTheGameVue(player) {
 	piocheEtDefause.id = "piocheEtDefause";
 	tourDuJoueur.id = "tourDuJoueur";
 
-	piocheEtDefause.innerHTML = '<div class="cadre"><button class="pioche"><div class="card-pioche"><h3>Pioche</h3></div></button></div>'
+	piocheEtDefause.innerHTML = '<div class="cadre"><button class="pioche"><div class="card-pioche"><h3>Pioche</h3></div></button></div>';
 
-	otherPlayer.append()
-	
+	for (let i = 0 ; i < player.length; i++) {
+		const div = document.createElement("div");
+		const h2 = document.createElement("h2");
+
+		div.classList.add("player");
+
+		h2.textContent = "le joueur " + AllPlayer[i].name + " a " + AllPlayer[i].cardOF.length + " cartes ."
+
+		div.appendChild(h2);
+
+		otherPlayer.appendChild(div);
+	}
+	boom(AllPlayer[0].name)
+/*
+	<div class="player">
+		<h2>nom a <span id="NcardOf">1</span> carte<span id="MamanTesChiante"></span></h2>
+	</div>
+*/
+
+
 	gameActive.append(piocheEtDefause, tourDuJoueur);
 
 	$GameVue.append(otherPlayer, gameActive);
-
-/*
-<section id="otherPlayer"></section>
-<section id="gameActive">
-	<section id="piocheEtDefause">
-		<div class="cadre">
-			<button class="pioche">
-				<div class="card-pioche">
-					<h3>Pioche</h3>
-				</div>
-			</button>
-		</div>
-		<div class="cadre">
-			<div class="card">
-				<p>0</p>
-				<h3>blue</h3>
-				<p class="right">0</p>
+console.log(AllPlayer)
+	/*
+	<section id="otherPlayer"></section>
+	<section id="gameActive">
+		<section id="piocheEtDefause">
+			<div class="cadre">
+				<button class="pioche">
+					<div class="card-pioche">
+						<h3>Pioche</h3>
+					</div>
+				</button>
 			</div>
-		</div>
+			<div class="cadre">
+				<div class="card">
+					<p>0</p>
+					<h3>blue</h3>
+					<p class="right">0</p>
+				</div>
+			</div>
+		</section>
+		<section id="tourDuJoueur"></section>
 	</section>
-	<section id="tourDuJoueur"></section>
-</section>
-*/
+	*/
 }
 
 //		queryselector
@@ -275,15 +352,17 @@ let $ = document.querySelector("");
 
 const $body = document.querySelector("body");
 const $info = document.querySelector("#info");
+const $infoGame = document.querySelector(".infoGame");
+const $infotext = document.querySelector("#infotext");
 const $CstAqui = document.querySelector("#aQuiCest");
 const $ProcCst = document.querySelector("#auProchainCest");
 const $setgame = document.querySelector("#setgame");
 const $start = document.querySelector("#start");
 const $GameVue = document.querySelector("#GameVue");
 
-let $boom = document.querySelector(".boom");
+let AllPlayer = "";
+let $boom = document.querySelectorAll(".boom");
 let $NcardOf = document.querySelectorAll("#NcardOf");
-let $nameOf = document.querySelectorAll("#NameOf");
 let man = document.querySelectorAll("#mamanTesChiante");
 
 //		addeventlistenner
@@ -291,29 +370,33 @@ let man = document.querySelectorAll("#mamanTesChiante");
 /*
 .addEventListener("click", () => {});
 */
+for (let i = 0; i < $boom.length; i++) {
+	$boom[i].addEventListener("click", () => {
+		$boom[i].remove()
+	});
+}
 
-// $boom.addEventListener("click", () => {
-// 	$boom.remove()
-// });
 $start.addEventListener("click", (e) => {
 	e.preventDefault();
 	let data = new FormData($setgame);
 	const NumberOfPalyer = data.get("nombreJoueur");
 	if (NumberOfPalyer > 1) {
+		$infotext.textContent = "c'est le tour de " + "\\ Le prochain c'est";
+		$setgame.classList.add("none")
 		AllPlayer = addorset(NumberOfPalyer, true);
-		setTheGameVue();
+		GiveMeAname(1);
 	}
+// c'est le tour de //. \ Le prochain c'est 
 });
 
 // test and debug zone
 
 document.addEventListener("DOMContentLoaded", () => {
-	console.log("Hello World", $body);
+	console.log("Hello World");
 });
-
-	// let AllPlayer = addorset(4, true);
-	// addorset(0, false, 2, AllPlayer[3]);
-	// deleteAcard("blue0", AllPlayer[3]);
+// let AllPlayer = addorset(4, true);
+// addorset(null, false, 2, AllPlayer[3]);
+// deleteAcard("blue0", AllPlayer[3]);
 
 /*
 
