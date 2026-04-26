@@ -33,6 +33,15 @@ button:hover {
 	cursor: pointer;
 }
 
+.hr {
+	border: none;
+	rotate: 80deg;
+	width: 30px;
+	height: 2.3px;
+	background-color: rgb(172, 66, 0);
+	border-radius: 999px;
+}
+
 body {
 	min-height: 100vh;
 	display: flex;
@@ -62,7 +71,7 @@ header {
 }
 
 #infotext {
-	margin: 0px 16px;
+	display: block;
 }
 
 form {
@@ -189,7 +198,6 @@ main {
 	flex-direction: row;
 	align-items: start;
 	justify-content: space-between;
-	gap: 20px;
 }
 
 #piocheEtDefause {
@@ -197,7 +205,7 @@ main {
 	grid-template-columns: 1fr 1fr;
 	justify-content: stretch;
 	align-items: stretch;
-	padding: 24px;
+	padding: 24px 0px 24px 24px;
 	gap: 32px;
 }
 
@@ -339,15 +347,16 @@ main {
 	right: 0;
 	bottom: 0;
 	left: 0;
-	background-color: black;
+	background-color: white;
 	border: none;
-	color: rgb(255, 255, 255);
+	color: black;
 	font-size: 64px;
 	text-align: center;
 }
 
 .boom span {
-	color: rgb(255, 255, 255);
+	color: black;
+	font-size: 32px;
 }
 
 .boom:hover {
