@@ -22,7 +22,7 @@ const Allcard = {
 //	pour plus facilement appeler la fonction selectCard 
 function addorset(howmany, whatis, addcard, player) {
 	if (whatis) {
-		return setGameOrAdd(howmany, 24, null);
+		return setGameOrAdd(howmany, 7, null);
 	}
 	return setGameOrAdd(1, addcard, player);
 };
@@ -496,22 +496,7 @@ function createCard(card, ForDefausse) {
 			}
 		});
 	}
-
 	return cardDiv;
-
-	/*
-		rgb(44, 44, 44)     black
-		rgb(0, 121, 207)    blue
-		rgb(36, 215, 27)    green
-		rgb(216, 52, 18)    red
-		rgb(251, 227, 10)   yellow
-	
-		<div class="card">
-			<p>0</p>
-			<h3>blue</h3>
-			<p class="right">0</p>
-		</div>
-	*/
 }
 //	verrifi si une carte1 peut etre poser sur une carte2 exmple : {id: "blue0", spe: false, color: blue} and {id: "red0", spe: false, color: red} return true car on peut posez la carte 1 sur la deuxieme
 //	si (cart2.color == "black") alors il faut mettre une couleur dans le troisieme paramettre sinon pas besoin
