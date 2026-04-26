@@ -1,9 +1,9 @@
+/*   font:  font-family: "Shrikhand", serif;, sans-serif;  font-family: "Roboto", sans-serif;  */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Shrikhand&display=swap');
+
 .none {
 	display: none !important;
 }
-
-/*   font   font-family: "Pixelify Sans", sans-serif;   font-family: "Noto Serif", serif;   */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Pixelify+Sans:wght@400..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 /*   couleur et padding ext   */
 :root {
@@ -20,9 +20,17 @@
 }
 
 h1 {
-	font-family: "Roboto", sans-serif;
 	font-size: 64px;
 	padding-bottom: 24px;
+	font-family: "Roboto", sans-serif;
+}
+
+button {
+	border: none;
+}
+
+button:hover {
+	cursor: pointer;
 }
 
 body {
@@ -37,11 +45,12 @@ body {
 header {
 	display: flex;
 	flex-direction: row;
-	align-items: stretch;
+	align-items: center;
 	justify-content: space-between;
 	padding: 20px 32px;
 	background-color: #dba124;
 	box-shadow: 0px 0px 30px 10px #c89321;
+	min-height: 45px;
 }
 
 .infoGame {
@@ -50,6 +59,10 @@ header {
 	align-items: center;
 	justify-content: center;
 	font-size: 24px;
+}
+
+#infotext {
+	margin: 0px 16px;
 }
 
 form {
@@ -122,6 +135,21 @@ label {
 	cursor: default;
 }
 
+.normalA {
+	padding: 6px 12px;
+	border-radius: var(--base-border-radius);
+	background: none;
+	font-size: 14px;
+	font-weight: 900;
+	text-decoration: underline;
+	color: #9a00a5;
+}
+
+.normalA:hover {
+	color: #d400e3;
+	cursor: pointer;
+}
+
 main {
 	display: flex;
 	flex-direction: column;
@@ -159,7 +187,7 @@ main {
 #gameActive {
 	display: flex;
 	flex-direction: row;
-	align-items: stretch;
+	align-items: start;
 	justify-content: space-between;
 	gap: 20px;
 }
@@ -168,7 +196,7 @@ main {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	justify-content: stretch;
-	align-items: start;
+	align-items: stretch;
 	padding: 24px;
 	gap: 32px;
 }
@@ -214,13 +242,12 @@ main {
 	gap: 8px;
 }
 
-.cadre {
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	align-items: stretch;
-	align-content: stretch;
-	justify-items: stretch;
+.defause:active {
+	opacity: 1;
+}
+
+.defause:hover {
+	cursor: default;
 }
 
 .card {
@@ -234,6 +261,10 @@ main {
 	gap: 10px;
 }
 
+.card:active {
+	opacity: 0.6;
+}
+
 /*
 	rgb(44, 44, 44)     black
 	rgb(216, 52, 18)    red
@@ -243,42 +274,66 @@ main {
 */
 .card p {
 	text-align: start;
-	font-size: 24px;
+	text-decoration: underline;
 }
 
 .card .right {
-	text-align: end;
+	text-align: start;
+	rotate: 180deg;
 }
 
 .card p,
 .card h3 {
-	font-family: "Pixelify Sans", sans-serif;
 	color: white;
+  	font-family: "Shrikhand", serif;
+	font-size: 20px;
 }
 
 .card h3 {
-	font-size: 24px;
 	margin: 0px 16px;
+}
+
+.CouleurChange {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: repeat(2, 1fr);
+	border-radius: 20px;
+	overflow: hidden;
+	border: 3px solid black;
+	min-width: 100px;
+}
+
+.CouleurChange:active {
+	opacity: 0.6;
+}
+
+.couleurQuart {
+	border: 1px solid black;
 }
 
 .card-pioche h3 {
 	color: rgb(255, 255, 0);
 	margin: 0px 16px;
+  	font-family: "Shrikhand", serif;
 }
 
 .card-pioche {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	height: 100%;
 	background: #b92f2f;
+}
+
+.peupas {
+	opacity: 0.4;
 }
 
 .boom {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	flex-direction: column  ;
+	gap: 16px;
+	flex-direction: column;
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -292,7 +347,7 @@ main {
 }
 
 .boom span {
-		color: rgb(255, 255, 255);
+	color: rgb(255, 255, 255);
 }
 
 .boom:hover {
